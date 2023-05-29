@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Regist"
 include (":app")
+include(":data")
+include(":domain")
+include(":presentation")

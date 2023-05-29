@@ -9,4 +9,5 @@ plugins {
 
     // Save args
     id("androidx.navigation.safeargs.kotlin") version "2.5.3" apply false
+    id("org.jetbrains.kotlin.jvm") version "1.8.0" apply false
 }

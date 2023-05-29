@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 
     // Kapt
     kotlin("kapt")
@@ -13,17 +13,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.regist"
+    namespace = "com.example.presentation"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.regist"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -39,36 +37,23 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
+    buildFeatures {
+    // ViewBinding
+        viewBinding = true
+    }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-
-    buildFeatures {
-// ViewBinding
-        viewBinding = true
     }
 }
 
 dependencies {
 
-    implementation("androidx.fragment:fragment-ktx:1.5.7")
-// Core
-    implementation("androidx.core:core-ktx:1.10.1")
-
-// AppCompat
+    implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-
-// Material Design
     implementation("com.google.android.material:material:1.9.0")
-
-// UI Components
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-// Architecture Components
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // Navigation
     val navVersion = "2.5.3"
@@ -87,9 +72,6 @@ dependencies {
     //noinspection GradleDependency
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate")
 
-    // Data
-    implementation (project(":data"))
-
-    // Presentation
-    implementation (project(":presentation"))
+    // Domain
+    api (project(":domain"))
 }

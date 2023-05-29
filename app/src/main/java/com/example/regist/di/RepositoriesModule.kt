@@ -1,7 +1,7 @@
 package com.example.regist.di
 
-import com.example.regist.data.repositories.UserDataRepositoryImpl
-import com.example.regist.domain.repositories.UserDataRepository
+import com.example.data.repositories.UserDataRepositoryImpl
+import com.example.domain.repositories.UserDataRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
