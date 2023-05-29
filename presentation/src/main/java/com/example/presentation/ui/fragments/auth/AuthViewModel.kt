@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUserUseCase: AuthUserUseCase
+    private val authUserUseCase: AuthUserUseCase,
 ) : ViewModel() {
 
     fun authUser(name: String, password: String, age: Int) {

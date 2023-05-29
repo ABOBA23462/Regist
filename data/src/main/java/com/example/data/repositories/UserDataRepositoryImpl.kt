@@ -3,7 +3,6 @@ package com.example.data.repositories
 import com.example.data.dtos.UserDataDto
 import com.example.data.dtos.toDomain
 import com.example.data.local.preferences.UserDataPreferencesHelper
-import com.example.domain.models.UserData
 import com.example.domain.repositories.UserDataRepository
 import javax.inject.Inject
 
