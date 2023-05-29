@@ -2,6 +2,7 @@ package com.example.presentation.ui.fragments.auth
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.presentation.R
@@ -9,6 +10,8 @@ import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentAuthBinding
 import com.example.presentation.ui.fragments.auth.AuthFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AuthFragment :
@@ -26,6 +29,15 @@ class AuthFragment :
                 val password = etPassword.text.toString().trim()
                 val age = etAge.text.toString().trim().toInt()
                 viewModel.authUser(login, password, age)
+
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(2000)
+                    viewModel.getUser().apply {
+                        binding.etLogin.setText(this.name)
+                        binding.etAge.setText(this.age)
+                        binding.etPassword.setText(this.password)
+                    }
+                }
                 findNavController().navigate(
                     AuthFragmentDirections.actionAuthFragmentToHomeFragment(
                         login,
